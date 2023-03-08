@@ -16,9 +16,7 @@ export class ContactForm extends Component {
   onSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
-
     const success = this.props.onSubmit(name, number);
-
     if (success) {
       this.setState({ name: '', number: '' });
     }
@@ -56,5 +54,4 @@ export class ContactForm extends Component {
 }
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
