@@ -12,33 +12,17 @@ const startContact = [
 ];
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('contacts')) ?? [...startContact]
+  );
   const [filter, setFilter] = useState('');
-  useEffect(() => {
-    setContacts(
-      JSON.parse(localStorage.getItem('contacts') ?? [...startContact])
-    );
-  });
 
-  // componentDidMount() {
-  //   const savedContacts = localStorage.getItem('contacts');
-
-  //   if (savedContacts) {
-  //     const parsedContacts = JSON.parse(savedContacts);
-  //     this.setState({ contacts: parsedContacts });
-  //     return;
-  //   }
-  // }
   useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
+    window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.contacts !== prevState.contacts) {
-  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  //   }
-  // }
+
   const addContact = (name, number) => {
-    const found = this.state.contacts.find(contact => contact.name === name);
+    const found = contacts.find(contact => contact.name === name);
 
     if (found) {
       alert(`${name} is already in contact`);
@@ -51,17 +35,13 @@ export const App = () => {
       id: nanoid(),
     };
 
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
-    }));
+    setContacts(prevState => [...prevState, newContact]);
 
     return true;
   };
 
   const deleteContact = id => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== id),
-    }));
+    setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
   const onSearch = event => {
     setFilter(event.target.value);
