@@ -23,11 +23,22 @@ const contactsSlice = createSlice({
       })
       .addMatcher(
         isAnyOf(
+          fetchContacts.pending,
+          addContact.pending,
+          deleteContact.pending
+        ),
+        state => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
           fetchContacts.rejected,
           addContact.rejected,
           deleteContact.rejected
         ),
         (state, { payload }) => {
+          state.isLoading = false;
           state.error = payload;
         }
       )

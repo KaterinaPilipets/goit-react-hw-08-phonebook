@@ -18,8 +18,8 @@ export const App = () => {
     <Layout>
       <h1>Phonebook</h1>
       <ContactForm />
-      <Loader />
-      {/* {isLoading && !error && <Loader />} */}
+
+      {isLoading && !error && <Loader />}
       <Section>
         <h2>Contacts</h2>
         <Filter />
