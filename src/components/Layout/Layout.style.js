@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const Layout = styled.div`
-  max-width: 300px;
+  max-width: 330px;
   width: 100%;
   text-align: center;
   margin-left: auto;
