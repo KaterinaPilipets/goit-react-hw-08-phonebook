@@ -18,7 +18,6 @@ export const App = () => {
     <Layout>
       <h1>Phonebook</h1>
       <ContactForm />
-
       {isLoading && !error && <Loader />}
       <Section>
         <h2>Contacts</h2>
