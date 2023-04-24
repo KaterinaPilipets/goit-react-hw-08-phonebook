@@ -1,6 +1,6 @@
 import { Label, Input } from './Filter.styled';
-import { selectFilter } from 'redux/selectors';
-import { changeValue } from 'redux/filterSlice';
+import { selectFilter } from 'redux/contacts/selectors';
+import { changeValue } from 'redux/contacts/filterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 function Filter() {
   const dispatch = useDispatch();
@@ -11,11 +11,10 @@ function Filter() {
 
   return (
     <Label>
-      Find contacts by name
       <Input
         type="text"
         value={filter}
-        placeholder="Seach"
+        placeholder="Find contacts by name"
         name="filter"
         onChange={handlerChange}
       />

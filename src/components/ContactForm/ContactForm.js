@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
-import { Form, Input, Button } from './ContactForm.styled';
+import { Form, Input, Button } from 'components/FormStyled/FormStyled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operation';
+
+import { addContact } from 'redux/contacts/operation';
 import { nanoid } from '@reduxjs/toolkit';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 export function ContactForm({ onSubmit }) {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
