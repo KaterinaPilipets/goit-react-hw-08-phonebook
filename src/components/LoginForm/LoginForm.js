@@ -15,6 +15,7 @@ export const LoginForm = () => {
       })
     );
     form.reset();
+    return;
   };
 
   return (
